@@ -7,3 +7,4 @@ passlib
 python-jose
 oauthlib
 requests
+passlib[bcrypt]
