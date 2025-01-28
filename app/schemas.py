@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, EmailStr
 from typing import List, Optional
 
 class UserBase(BaseModel):
@@ -7,8 +7,19 @@ class UserBase(BaseModel):
     contact_details: Optional[str] = None
     resume: Optional[str] = None
 
-class UserCreate(UserBase):
+class UserCreate(BaseModel):
+    email: EmailStr
     password: str
+    name: str
+    contact_details: str
+    resume: str
+
+class UserResponse(BaseModel):
+    id: int
+    email: EmailStr
+    name: str
+    contact_details: str
+    resume: str
 
 class User(UserBase):
     id: int

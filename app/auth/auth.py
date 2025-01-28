@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app import crud, schemas
-from app.database import get_db
+from app.db import get_db
 from app.auth.oauth2 import create_access_token
 from app.auth.hashing import verify_password
 
