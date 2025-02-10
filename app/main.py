@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from routers import users, jobs, applications
+from auth import auth
 from db import engine, Base, init_db
 from dotenv import load_dotenv
 import uvicorn
@@ -22,6 +23,8 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(users.router)
 app.include_router(jobs.router)
 app.include_router(applications.router)
+app.include_router(auth.router)
+
 
 
 
@@ -34,4 +37,4 @@ def read_root():
 if __name__ == "__main__":
     if not os.path.exists("db.sqlite"):
         init_db()
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000,)
